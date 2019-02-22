@@ -243,7 +243,7 @@ proxy.on('proxyReq', function (proxyReq, req, res, options) {
     // 只考虑application/json情况
     // 如果是POST  && 有自定义传入的body
     // 重新buffer
-    if (req.method === 'POST' && req._body) {
+    if (req.method === 'POST' && Object.keys(req._body).length) {
         let bodyData = JSON.stringify(req._body);
         // incase if content-type is application/x-www-form-urlencoded -> we need to change to application/json
         proxyReq.setHeader('Content-Type', 'application/json');
